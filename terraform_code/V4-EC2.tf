@@ -94,3 +94,17 @@ resource "aws_route_table_association" "demo-rta-public-snet-2" {
   subnet_id = aws_subnet.demo-public-snet-2.id
   route_table_id = aws_route_table.demo-public-rt.id
 }
+
+output "instance_public_ip" {
+  description = "List of public IP address of the instances"
+  value = [
+    for instance in aws_instance.demo-server : instance.public_ip
+  ]
+}
+
+output "instance_public_ip_with_name" {
+  description = "List of public IP address of the instances"
+  value = {
+    for idx, instance in aws_instance.demo-server : "instance-${idx}" => instance.public_ip
+  }
+}
