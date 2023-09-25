@@ -104,7 +104,12 @@ output "instance_public_ip" {
 
 output "instance_public_ip_with_name" {
   description = "List of public IP address of the instances"
-  value = {
-    for idx, instance in aws_instance.demo-server : "instance-${idx}" => instance.public_ip
-  }
+  value = [
+    for index, instance in aws_instance.demo-server : 
+    {
+      name = "instance-${index}"
+      public_ip = instance.public_ip
+      private_ip = instance.private_ip
+    }
+  ]
 }

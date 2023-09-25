@@ -1,0 +1,13 @@
+[jenkins-m]
+3.81.134.231
+
+[jenkins-m:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key=/opt/k8h-hp.pem
+
+[jenkins-s]
+54.92.182.131
+
+[jenkins-s:vars]
+ansible_user=ubuntu
+ansible_ssh_private_key=/opt/k8h-hp.pem
