@@ -16,17 +16,18 @@
     apt:
       name: openjdk-11-jre
       state: present
+
   - name: jenkins
     apt:
       name: jenkins
       state: present
+
   - name: start jenkins service
     service:
       name: jenkins
       start: started
+
   - name: enable jenkins to start at boot time
     service:
       name: jenkins
       enabled: yes
-
-
